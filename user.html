@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>User Management - Admin Dashboard</title>
+  <style>
+    /* Custom styles for the profile picture */
+    .profile-pic {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    /* Custom styles for the sidebar */
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Profile Picture and Sidebar Toggle -->
+<header class="flex items-center justify-between bg-white shadow-md p-4 md:p-6">
+  <div>
+    <!-- Profile Picture -->
+    <img src="path/to/profile-picture.jpg" alt="Profile Picture" class="profile-pic">
+  </div>
+  <!-- Sidebar Toggle Button -->
+  <label for="sidebar-toggle" class="md:hidden block p-2 bg-blue-500 text-white cursor-pointer">
+    <i class="bx bx-menu text-2xl"></i>
+  </label>
+  <!-- Sidebar Navigation (Visible on larger screens) -->
+  <nav class="hidden md:flex space-x-4">
+    <a href="dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+    <a href="user.html" class="text-gray-600 hover:text-gray-900">Users</a>
+    <a href="schudules.html" class="text-gray-600 hover:text-gray-900">Schedules</a>
+    <a href="setting.html" class="text-gray-600 hover:text-gray-900">Settings</a>
+  </nav>
+</header>
+
+<!-- Sidebar -->
+<input type="checkbox" id="sidebar-toggle" class="hidden">
+<div class="sidebar w-64 h-screen bg-white shadow-md md:block fixed top-0 left-0 transform -translate-x-full transition-transform duration-300 z-30">
+  <ul class="mt-10">
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bxs-dashboard mr-3"></i>
+      <a href="dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bxs-group mr-3"></i>
+      <a href="user.html" class="text-gray-600 hover:text-gray-900">Users</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bx-calendar mr-3"></i>
+      <a href="schudules.html" class="text-gray-600 hover:text-gray-900">Schedules</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+        <i class="bx bx-cog mr-3"></i>
+        <a href="setting.html" class="text-gray-600 hover:text-gray-900">Settings</a>
+      </li>
+  </ul>
+</div>
+
+<!-- Main Content -->
+<div class="ml-0 md:ml-64 transition-all duration-300">
+  <div class="p-6 md:p-10">
+    <h1 class="text-3xl font-semibold">User Management</h1>
+    <ul class="flex items-center text-gray-500 mt-2">
+      <li>
+        <a href="test.html" class="text-blue-500">Dashboard</a>
+      </li>
+      <li class="mx-2">
+        <i class="bx bx-chevron-right"></i>
+      </li>
+      <li>
+        <a href="test.html" class="active">Users</a>
+      </li>
+    </ul>
+
+    <!-- User Profile Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <!-- User Profile Card -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6 flex items-center">
+          <img src="path/to/user-profile.jpg" alt="User Profile" class="w-20 h-20 rounded-full mr-4">
+          <div>
+            <h3 class="text-lg font-semibold">John Doe</h3>
+            <p class="text-gray-600">Admin</p>
+          </div>
+        </div>
+        <div class="bg-gray-100 p-4">
+          <ul class="text-gray-600">
+            <li class="flex items-center py-1">
+              <i class="bx bxs-envelope mr-2"></i>
+              <span>john.doe@example.com</span>
+            </li>
+            <li class="flex items-center py-1">
+              <i class="bx bxs-phone mr-2"></i>
+              <span>+1 234 567 890</span>
+            </li>
+            <li class="flex items-center py-1">
+              <i class="bx bxs-calendar mr-2"></i>
+              <span>Joined: June 2022</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- User List Card -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden col-span-2">
+        <div class="p-6">
+          <h3 class="text-lg font-semibold mb-4">User List</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <img src="path/to/user1.jpg" alt="User 1" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold">User One</h4>
+                <p class="text-gray-600">user.one@example.com</p>
+              </div>
+            </li>
+            <li class="flex items-center">
+              <img src="path/to/user2.jpg" alt="User 2" class="w-12 h-12 rounded-full mr-4">
+              <div>
+                <h4 class="font-semibold">User Two</h4>
+                <p class="text-gray-600">user.two@example.com</p>
+              </div>
+            </li>
+            <!-- Add more users as needed -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Details Card -->
+    <section class="bg-white rounded-lg shadow-md mt-6">
+      <div class="p-6">
+        <h3 class="text-lg font-semibold mb-4">User Details</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+            <p class="text-gray-900 mt-1" id="username">john_doe</p>
+          </div>
+          <div>
+            <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+            <p class="text-gray-900 mt-1" id="role">Admin</p>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <p class="text-gray-900 mt-1" id="email">john.doe@example.com</p>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+            <p class="text-gray-900 mt-1" id="phone">+1 234 567 890</p>
+          </div>
+          <!-- Add more details as needed -->
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- JavaScript for Sidebar Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarToggle = document.querySelector('#sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    sidebarToggle.addEventListener('change', function () {
+      sidebar.classList.toggle('sidebar-open');
+    });
+  });
+</script>
+
+</body>
+</html>

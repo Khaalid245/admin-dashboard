@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Schedule Management - Admin Dashboard</title>
+  <style>
+    /* Custom styles for the sidebar */
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-open {
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Profile Picture and Sidebar Toggle -->
+<header class="flex items-center justify-between bg-white shadow-md p-4 md:p-6">
+  <div>
+    <!-- Profile Picture -->
+    <img src="path/to/profile-picture.jpg" alt="Profile Picture" class="profile-pic">
+  </div>
+  <!-- Sidebar Toggle Button -->
+  <label for="sidebar-toggle" class="md:hidden block p-2 bg-blue-500 text-white cursor-pointer">
+    <i class="bx bx-menu text-2xl"></i>
+  </label>
+  <!-- Sidebar Navigation (Visible on larger screens) -->
+  <nav class="hidden md:flex space-x-4">
+    <a href="dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+    <a href="user.html" class="text-gray-600 hover:text-gray-900">Users</a>
+    <a href="schudules.html" class="text-gray-600 hover:text-gray-900">Schedules</a>
+    <a href="setting.html" class="text-gray-600 hover:text-gray-900">Settings</a>
+  </nav>
+</header>
+
+<!-- Sidebar -->
+<input type="checkbox" id="sidebar-toggle" class="hidden">
+<div class="sidebar w-64 h-screen bg-white shadow-md md:block fixed top-0 left-0 transform -translate-x-full transition-transform duration-300 z-30">
+  <ul class="mt-10">
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bxs-dashboard mr-3"></i>
+      <a href="dashboard.html" class="text-gray-600 hover:text-gray-900">Dashboard</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bxs-group mr-3"></i>
+      <a href="user.html" class="text-gray-600 hover:text-gray-900">Users</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+      <i class="bx bx-calendar mr-3"></i>
+      <a href="schudules.html" class="text-gray-600 hover:text-gray-900">Schedules</a>
+    </li>
+    <li class="flex items-center px-6 py-2 hover:bg-blue-100 transition-colors">
+        <i class="bx bx-cog mr-3"></i>
+        <a href="settings.html" class="text-gray-600 hover:text-gray-900">Settings</a>
+      </li>
+  </ul>
+</div>
+
+<!-- Main Content -->
+<div class="ml-0 md:ml-64 transition-all duration-300">
+  <div class="p-6 md:p-10">
+    <h1 class="text-3xl font-semibold">Schedule Management</h1>
+    <ul class="flex items-center text-gray-500 mt-2">
+      <li>
+        <a href="#" class="text-blue-500">Dashboard</a>
+      </li>
+      <li class="mx-2">
+        <i class="bx bx-chevron-right"></i>
+      </li>
+      <li>
+        <a href="test.html" class="active">Schedules</a>
+      </li>
+    </ul>
+
+    <!-- Schedule List Section -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+      <!-- Schedule List Card -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden col-span-2">
+        <div class="p-6">
+          <h3 class="text-lg font-semibold mb-4">Schedule List</h3>
+          <table class="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th class="py-2">User</th>
+                <th class="py-2">Date</th>
+                <th class="py-2">Location</th>
+                <th class="py-2">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="flex items-center py-2">
+                  <img src="path/to/user-profile.jpg" class="w-10 h-10 rounded-full mr-2" />
+                  <p>John Doe</p>
+                </td>
+                <td>Monday, June 16</td>
+                <td>New York</td>
+                <td>
+                  <span class="px-2 py-1 text-sm bg-green-200 text-green-800 rounded-full">Collected</span>
+                </td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Add Schedule Form Card -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <h3 class="text-lg font-semibold mb-4">Add New Schedule</h3>
+          <form>
+            <div class="mb-4">
+              <label for="user" class="block text-sm font-medium text-gray-700">User</label>
+              <select id="user" name="user" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                <option>John Doe</option>
+                <option>Jane Doe</option>
+                <!-- Add more users as needed -->
+              </select>
+            </div>
+            <div class="mb-4">
+              <label for="date" class="block text-sm font-medium text-gray-700">Date</label>
+              <input type="date" id="date" name="date" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+              <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+              <input type="text" id="location" name="location" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            <div class="mb-4">
+              <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+              <select id="status" name="status" class="mt-1 block w-full bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                <option>Pending</option>
+                <option>Collected</option>
+              </select>
+            </div>
+            <div>
+              <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Add Schedule</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- JavaScript for Sidebar Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const sidebarToggle = document.querySelector('#sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+
+    sidebarToggle.addEventListener('change', function () {
+      sidebar.classList.toggle('sidebar-open');
+    });
+  });
+</script>
+
+</body>
+</html>
